@@ -1,5 +1,6 @@
+feature/add-book
 books = [] 
-
+import json
 def add_book():
     name=input('название: ').strip()
     author=input('автор: ').strip()
@@ -19,12 +20,16 @@ def add_book():
         'дата': time
     })
     print("книга добавлена")
-        
-    
 def load_books():
-    pass
+    file=open("books.json","r",encoding="utf-8")
+    dt=json.load(file)
+    file.close()
+    return dt
 def save_books(books):
-    pass
+    file=open("books.json","w",encoding="utf-8")
+    json.dump(books,file)
+    file.close()
+main
 def main():
     while True:
         # Показать меню
