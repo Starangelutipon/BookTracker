@@ -1,7 +1,13 @@
+import json
 def load_books():
-    pass
+    file=open("books.json","r",encoding="utf-8")
+    dt=json.load(file)
+    file.close()
+    return dt
 def save_books(books):
-    pass
+    file=open("books.json","w",encoding="utf-8")
+    json.dump(books,file)
+    file.close()
 def main():
     while True:
         # Показать меню
@@ -9,3 +15,4 @@ def main():
         break
 if __name__ == "__main__":
     main()
+сохранение и загрузка файлов
