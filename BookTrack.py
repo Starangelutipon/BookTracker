@@ -43,14 +43,14 @@ def list_and_stats(x):
             av_rate=m_rate/len(books)
             print(av_rate)
     elif x==2:
-        author_c=input('напишите автора: ')
-        book_cnt=0
+        stats = {}
         for book in books:
-            if author_c==book['автор']:
-                print(f"книга {book['имя']};дата прочтения {book['дата']};оценка {book['оценка']}")
-                book_cnt+=1
-        if book_cnt==0:
-            print('книг этого автора нет')
+            author=book['автор']
+            stats[author]=stats.get(author, 0)+1
+            print('статистика по авторам')
+        for author, count in stats.items():
+            print(f'автор: {author};кол-во книг: {count}')
+        
 def load_books():
     file=open("books.json","r",encoding="utf-8")
     dt=json.load(file)
