@@ -1,4 +1,5 @@
 import json
+
 books = [] 
 def add_book():
     name=input('название: ').strip()
@@ -23,7 +24,7 @@ def delete():
     name=input('название: ').strip()
     author=input('автор: ').strip()
     for book in books:
-        if name.lower()==book['имя'] and author.lower()==['автор']:
+        if name.lower()==book['имя'].lower() and author.lower()==book['автор'].lower():
             books.remove(book)
             print('книга удалена')
             return
@@ -60,9 +61,27 @@ def save_books(books):
     json.dump(books,file)
     file.close()
 def main():
+    global books
+    books=load_books()
     while True:
-        # Показать меню
-        # Вызвать нужную функцию
-        break
+        print('1.Добавить книгу\n2.Показать все книги\n3.Показать среднюю оценку\n4.Статистика по авторам\n5.Удалить книгу\n6.Выход')
+        choice=input('выбор: ')
+        if choice=='1':
+            add_book()
+            save_books(books)
+        if choice=='2':
+            x=0
+            list_and_stats(x)
+        if choice=='3':
+            x=1
+            list_and_stats(x)
+        if choice=='4':
+            x=2
+            list_and_stats(x)
+        if choice=='5':
+            delete()
+            save_books(books)
+        if choice=='6':
+            break
 if __name__ == "__main__":
     main()
