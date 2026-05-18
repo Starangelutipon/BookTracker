@@ -40,8 +40,8 @@ def list_and_stats(x):
     elif x==1:
         for book in books:
             m_rate+=book['оценка']
-            av_rate=m_rate/len(books)
-            print(av_rate)
+        av_rate=m_rate/len(books)
+        print(av_rate)
     elif x==2:
         stats = {}
         for book in books:
